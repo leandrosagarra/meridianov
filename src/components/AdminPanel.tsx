@@ -232,7 +232,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ isOpen, onClose }) => {
                 Acceso de Administración
               </h4>
               <p className="text-xs sm:text-sm text-slate-400 mt-1">
-                Ingresá el PIN institucional de seguridad para editar partidos, resultados, noticias y categorías.
+                Ingresá el PIN institucional de seguridad para gestionar noticias, categorías y socios.
               </p>
             </div>
 
@@ -241,14 +241,14 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ isOpen, onClose }) => {
                 <input
                   type="password"
                   autoFocus
-                  placeholder="Ingresá el PIN (ej: 1929)"
+                  placeholder="Ingresá el PIN (ej: 1414)"
                   value={pinInput}
                   onChange={(e) => setPinInput(e.target.value)}
                   className="w-full text-center text-xl tracking-widest font-mono bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500"
                 />
                 {loginError && (
                   <p className="text-xs text-rose-400 mt-1.5 font-medium">
-                    PIN incorrecto. El PIN por defecto es 1929.
+                    PIN incorrecto. El PIN es 1414.
                   </p>
                 )}
               </div>
@@ -263,7 +263,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ isOpen, onClose }) => {
 
             <div className="pt-4 border-t border-slate-800/80">
               <p className="text-xs text-slate-500">
-                💡 Nota para evaluadores/usuarios: el PIN predeterminado es <strong className="text-blue-400">1929</strong> (año de fundación).
+                💡 Nota: el PIN de administración es <strong className="text-blue-400">1414</strong>.
               </p>
             </div>
           </div>

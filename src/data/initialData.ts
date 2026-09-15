@@ -17,7 +17,7 @@ export const INITIAL_CLUB_INFO: ClubInfo = {
   facebook: 'https://facebook.com/clubmeridianov',
   heroImage: '/foto4.jpg',
   aboutText: [
-    'El día 8 de Junio de 1928 se reúnen por primera vez y por mutuo acuerdo, los vecinos del Barrio Sud de la Ciudad, cuya finalidad era crear y dejar constituida una sociedad de fomento y cultura, siendo su sede original en la calle 70 n°102. Esos vecinos designan Presidente provisorio al Sr. Leonildo C. Frangi.',
+    'El día 8 de Junio de 1928 se reúnen por primera vez y por mutuo acuerdo, los vecinos del Barrio Sud de la Ciudad, cuya finalidad era crear y dejar constituida una sociedad de fomento y cultura. Esos vecinos designan Presidente provisorio al Sr. Leonildo C. Frangi.',
     'Luego de arduas tratativas el esfuerzo se vio coronado el 19 de abril de 1929, fecha en que es fundado el Centro de Fomento y Biblioteca Meridiano V°, habiéndose designado Presidente al Sr. Tomás Mercatilli.',
     'A lo largo de casi un siglo, el club se convirtió en un pilar deportivo y social de La Plata, formando generaciones de basquetbolistas con valores de compañerismo, esfuerzo y sentido de pertenencia en el histórico barrio de la estación.'
   ],
@@ -473,63 +473,19 @@ export const INITIAL_MATCHES: Match[] = [
 
 export const INITIAL_NEWS: NewsArticle[] = [
   {
-    id: 'news-1',
-    title: 'Noche inolvidable en Calle 67: la Primera venció a Unión Vecinal',
-    slug: 'noche-inolvidable-primera-union-vecinal',
-    summary: 'Con un microestadio colmado y un clima electrizante, Meridiano V° superó 81-76 a Unión Vecinal en una exhibición de coraje y juego colectivo.',
-    content: `El viernes por la noche se vivió una verdadera fiesta en el gimnasio de Calle 67 e/ 16 y 17. Nuestro primer equipo de básquetbol logró un triunfo trascendental frente a Unión Vecinal por 81 a 76 en el marco del Torneo Oficial de la Asociación Platense de Básquetbol (APB).\n\nCon un marco imponente de familias, socios e hinchas que coparon las tribunas, el equipo dirigido tácticamente por Mariano Arrechea tuvo momentos de básquet de alto vuelo. Gonzalo "Pitu" Frangi fue la figura indiscutida del pleito con 24 unidades y 7 asistencias, secundado por una labor titánica bajo los aros de Federico Poggi con 14 rebotes.\n\n"Esta victoria es el resultado del esfuerzo que hacemos toda la semana acá en el club. Jugar con esta gente alentando de principio a fin te da un plus imposible de explicar", declaró el capitán al terminar el encuentro.\n\nEl próximo desafío para Meridiano V° será este viernes cuando recibamos a Atenas en otro duelo estelar. ¡A seguir alentando!`,
-    date: '12 de Septiembre de 2026',
-    categoryTag: 'Primera División',
-    coverImage: 'https://images.unsplash.com/photo-1546519638-68e109498ffc?q=80&w=1200&auto=format&fit=crop',
+    id: 'news-institucional',
+    title: 'Comunicado Institucional: Vida social, cultural y deportiva en Meridiano V°',
+    slug: 'comunicado-institucional-meridiano-v',
+    summary: 'Compartimos las novedades de la institución, la convocatoria a socios y el compromiso permanente con el barrio y el deporte.',
+    content: `El Centro de Fomento Social, Cultural y Deportivo Meridiano V° continúa adelante con su misión histórica de promover el deporte, la integración vecinal y la contención comunitaria en el Barrio Sud de La Plata.\n\nInvitamos a toda la comunidad a participar de las actividades deportivas y sociales, acercarse a nuestra sede social de Calle 67 e/ 16 y 17 y sumarse como socios para continuar engrandeciendo el club de todos.\n\nAgradecemos el acompañamiento permanente de las familias, jugadoras, jugadores y simpatizantes que defienden con pasión y orgullo nuestros colores azul y blanco.`,
+    date: '15 de Septiembre de 2026',
+    categoryTag: 'INSTITUCIONAL',
+    coverImage: '/foto4.jpg',
     gallery: [
-      'https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=1200&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1504450758481-7338eba7524a?q=80&w=1200&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1518063319789-7217e6706b04?q=80&w=1200&auto=format&fit=crop'
-    ],
-    author: 'Prensa Meridiano V°'
-  },
-  {
-    id: 'news-2',
-    title: '¡Sumate a la Escuelita de Básquet! Abiertas las inscripciones para niños y niñas',
-    slug: 'sumate-escuelita-basquet-2026',
-    summary: 'Invitamos a todas las familias y vecinos del barrio a traer a sus hijos e hijas desde los 4 años para aprender jugando en un ambiente cálido y formativo.',
-    content: `El Centro de Fomento y Biblioteca Meridiano V° abre sus puertas a una nueva temporada de la Escuelita de Básquetbol y Mini Básquet. Destinado a chicos y chicas de entre 4 y 12 años, el espacio se propone inculcar la diversión, la disciplina, la técnica deportiva y la convivencia sana.\n\nLos entrenamientos se llevan adelante los días lunes, miércoles y viernes a las 17:30 hs bajo la conducción de profesores de educación física especializados en iniciación deportiva.\n\nLos únicos requisitos son traer ropa cómoda, zapatillas de entrenamiento y el certificado médico de aptitud física. ¡La primera clase de prueba es totalmente libre y gratuita para que conozcan el club!`,
-    date: '10 de Septiembre de 2026',
-    categoryTag: 'Escuela & Formativas',
-    coverImage: 'https://images.unsplash.com/photo-1519766304817-4f37bda74a29?q=80&w=1200&auto=format&fit=crop',
-    gallery: [
-      'https://images.unsplash.com/photo-1519766304817-4f37bda74a29?q=80&w=1200&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1579952363873-27f3bade9f55?q=80&w=1200&auto=format&fit=crop'
-    ],
-    author: 'Subcomisión de Mini Básquet'
-  },
-  {
-    id: 'news-3',
-    title: 'Avanza la renovación y laqueado del piso de parquet del Microestadio',
-    slug: 'renovacion-piso-parquet-microestadio',
-    summary: 'Gracias al aporte de la masa societaria y eventos solidarios del club, se completó la primera etapa de pulido y laqueado ignífugo reglamentario.',
-    content: `Con inmensa alegría compartimos los avances en la infraestructura de nuestra sede en Calle 67. Durante los últimos días se realizaron tareas de lijado profundo, reposición de listones de madera de guatambú y aplicación de lacas de alta resistencia para dejar la cancha en óptimas condiciones de competencia.\n\nAsimismo se rediseñaron las líneas reglamentarias de tiro de tres puntos y pintura perimetral con los colores azul y blanco que representan el orgullo de nuestra institución.\n\nQueremos agradecer profundamente a todos los socios, socias, familias y empresas amigas que colaboraron en la rifa anual que hizo posible esta inversión histórica en la casa de todos.`,
-    date: '05 de Septiembre de 2026',
-    categoryTag: 'Obras e Instalaciones',
-    coverImage: 'https://images.unsplash.com/photo-1504450758481-7338eba7524a?q=80&w=1200&auto=format&fit=crop',
-    gallery: [
-      'https://images.unsplash.com/photo-1504450758481-7338eba7524a?q=80&w=1200&auto=format&fit=crop'
+      '/foto4.jpg',
+      '/foto1.jpg'
     ],
     author: 'Comisión Directiva'
-  },
-  {
-    id: 'news-4',
-    title: 'El Básquet Femenino clasificó a las semifinales del Torneo Apertura',
-    slug: 'basquet-femenino-semifinales-apertura',
-    summary: 'Las chicas dirigidas por Micaela Albarracín derrotaron a Platense 54 a 48 y se metieron entre los cuatro mejores equipos de la ciudad.',
-    content: `El básquet femenino de Meridiano V° no para de crecer. En un partido vibrante de principio a fin, el representativo femenino venció como local a Platense por 54 a 48 y aseguró su pasaje directo a las semifinales del torneo metropolitano.\n\nCon un goleo repartido y una defensa en zona implacable durante los últimos 5 minutos de partido, Meridiano V° logró desatar el festejo en el Microestadio. Este fin de semana comenzará la serie semifinal ante Gimnasia y Esgrima La Plata. ¡Los esperamos a todos para acompañar a nuestras jugadoras!`,
-    date: '02 de Septiembre de 2026',
-    categoryTag: 'Básquet Femenino',
-    coverImage: 'https://images.unsplash.com/photo-1518063319789-7217e6706b04?q=80&w=1200&auto=format&fit=crop',
-    gallery: [
-      'https://images.unsplash.com/photo-1518063319789-7217e6706b04?q=80&w=1200&auto=format&fit=crop'
-    ],
-    author: 'Prensa Femenina'
   }
 ];
 

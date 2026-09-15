@@ -16,7 +16,7 @@ import {
 
 export const ClubHistorySection: React.FC = () => {
   const { clubInfo } = useClubData();
-  const [activeTab, setActiveTab] = useState<'historia' | 'instalaciones' | 'autoridades' | 'logros'>('historia');
+  const [activeTab, setActiveTab] = useState<'historia' | 'autoridades' | 'logros'>('historia');
 
   return (
     <section id="el-club" className="py-14 sm:py-20 bg-slate-950 border-t border-slate-800">
@@ -31,7 +31,7 @@ export const ClubHistorySection: React.FC = () => {
             EL CLUB MERIDIANO V°
           </h2>
           <p className="mt-2 text-sm sm:text-base text-slate-300">
-            Nacidos en el corazón del Barrio Sud de La Plata en 1929. Historia, cultura, instalaciones y sentido de pertenencia.
+            Nacidos en el corazón del Barrio Sud de La Plata en 1929. Historia, cultura y sentido de pertenencia.
           </p>
         </div>
 
@@ -50,18 +50,6 @@ export const ClubHistorySection: React.FC = () => {
           </button>
 
           <button
-            onClick={() => setActiveTab('instalaciones')}
-            className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all ${
-              activeTab === 'instalaciones'
-                ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/25 ring-2 ring-white/20'
-                : 'bg-slate-900 text-slate-300 hover:text-white border border-slate-800'
-            }`}
-          >
-            <Building2 className="w-4 h-4" />
-            <span>Instalaciones</span>
-          </button>
-
-          <button
             onClick={() => setActiveTab('autoridades')}
             className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all ${
               activeTab === 'autoridades'
@@ -70,7 +58,7 @@ export const ClubHistorySection: React.FC = () => {
             }`}
           >
             <Users className="w-4 h-4" />
-            <span>Autoridades & Presidentes</span>
+            <span>Autoridades</span>
           </button>
 
           <button
@@ -133,15 +121,13 @@ export const ClubHistorySection: React.FC = () => {
                   )}
                 </div>
 
-                <div className="grid grid-cols-2 gap-4 pt-2">
-                  <div className="p-3.5 rounded-xl bg-slate-950/90 border border-blue-900/50 backdrop-blur-sm">
-                    <span className="block text-[11px] text-blue-300 font-bold uppercase">1ª Sede Original</span>
-                    <span className="font-bold text-white text-sm">Calle 70 n°102</span>
-                  </div>
-
-                  <div className="p-3.5 rounded-xl bg-slate-950/90 border border-blue-900/50 backdrop-blur-sm">
-                    <span className="block text-[11px] text-blue-300 font-bold uppercase">Sede Actual</span>
-                    <span className="font-bold text-blue-400 text-sm">Calle 67 e/16 y 17 nº1080</span>
+                <div className="pt-2">
+                  <div className="p-4 rounded-xl bg-slate-950/90 border border-blue-900/50 backdrop-blur-sm inline-flex items-center gap-3">
+                    <MapPin className="w-5 h-5 text-blue-400 shrink-0" />
+                    <div>
+                      <span className="block text-[11px] text-blue-300 font-bold uppercase tracking-wider">Sede Social Actual</span>
+                      <span className="font-bold text-white text-sm sm:text-base">Calle 67 e/16 y 17 nº1080</span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -180,53 +166,12 @@ export const ClubHistorySection: React.FC = () => {
           </div>
         )}
 
-        {/* Tab 2: Instalaciones */}
-        {activeTab === 'instalaciones' && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {clubInfo.facilities.map((facility) => (
-              <div
-                key={facility.id}
-                className="rounded-2xl overflow-hidden bg-slate-900 border border-slate-800 shadow-md flex flex-col group hover:border-blue-500/40 transition-colors"
-              >
-                <div className="relative aspect-[16/9] overflow-hidden bg-slate-950">
-                  <img
-                    src={facility.image}
-                    alt={facility.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    referrerPolicy="no-referrer"
-                  />
-                  {facility.highlight && (
-                    <span className="absolute top-3 right-3 px-2.5 py-1 rounded-md text-xs font-bold bg-blue-950/90 text-blue-300 border border-blue-400/40 backdrop-blur shadow">
-                      {facility.highlight}
-                    </span>
-                  )}
-                </div>
-                <div className="p-5 flex-1 flex flex-col justify-between">
-                  <div>
-                    <h4 className="font-heading font-black text-lg text-white uppercase mb-2">
-                      {facility.name}
-                    </h4>
-                    <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                      {facility.description}
-                    </p>
-                  </div>
-                  <div className="mt-4 pt-3 border-t border-slate-800 text-xs text-blue-400 font-semibold flex items-center gap-1.5">
-                    <MapPin className="w-3.5 h-3.5" />
-                    <span>Sede Social: Calle 67 e/16 y 17 nº1080</span>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
-
-        {/* Tab 3: Autoridades & Presidentes */}
+        {/* Tab 2: Autoridades */}
         {activeTab === 'autoridades' && (
-          <div className="space-y-8">
-            {/* Current Board */}
+          <div>
             <div className="bg-slate-900 rounded-3xl p-6 sm:p-8 border border-slate-800">
               <h3 className="font-heading font-black text-xl sm:text-2xl text-white uppercase mb-6 flex items-center gap-2">
-                <Users className="w-6 h-6 text-blue-400" /> Comisión Directiva Actual
+                <Users className="w-6 h-6 text-blue-400" /> Autoridades del Club
               </h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                 {clubInfo.authorities.map((auth, idx) => (
@@ -240,30 +185,6 @@ export const ClubHistorySection: React.FC = () => {
                     <span className="font-semibold text-sm sm:text-base text-white mt-0.5 block">
                       {auth.name}
                     </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Historical Presidents */}
-            <div className="bg-slate-900 rounded-3xl p-6 sm:p-8 border border-slate-800">
-              <div className="mb-6">
-                <h3 className="font-heading font-black text-xl sm:text-2xl text-white uppercase flex items-center gap-2">
-                  <History className="w-6 h-6 text-blue-400" /> Galería de Presidentes Históricos
-                </h3>
-                <p className="text-xs sm:text-sm text-slate-400 mt-1">
-                  Hombres y vecinos que con esfuerzo y dedicación contribuyeron para que esta institución esté en el lugar que hoy se encuentra.
-                </p>
-              </div>
-
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
-                {clubInfo.historicalPresidents.map((pres, idx) => (
-                  <div
-                    key={idx}
-                    className="p-3 rounded-xl bg-slate-950/80 border border-slate-800/80 text-xs text-slate-300 flex items-center gap-2"
-                  >
-                    <span className="w-2 h-2 rounded-full bg-blue-400 shrink-0" />
-                    <span className="font-medium truncate" title={pres}>{pres}</span>
                   </div>
                 ))}
               </div>

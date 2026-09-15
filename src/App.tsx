@@ -57,10 +57,10 @@ export default function App() {
           {/* Noticias del Club */}
           <NewsSection />
 
-          {/* El Club (Historia, Instalaciones, Presidentes) */}
+          {/* El Club (Historia, Autoridades, Logros) */}
           <ClubHistorySection />
 
-          {/* IMPORTANTE: Solapa para Asociarse al Club */}
+          {/* Asociate al Club */}
           <AsociateSection />
 
           {/* Sumate al Club: ¿Querés jugar al básquet con nosotros? */}

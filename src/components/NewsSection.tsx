@@ -35,81 +35,147 @@ export const NewsSection: React.FC = () => {
               NOTICIAS DEL CLUB
             </h2>
             <p className="mt-1 text-sm sm:text-base text-slate-300">
-              Enterate de los resultados, eventos sociales, obras en las instalaciones y vida institucional.
+              Enterate de los comunicados oficiales y vida institucional del club.
             </p>
           </div>
 
-          <button
-            onClick={() => setShowAllNews(!showAllNews)}
-            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-blue-400 font-bold text-sm border border-slate-700 hover:border-blue-400/40 transition-all active:scale-95"
-          >
-            <span>{showAllNews ? 'Mostrar Menos' : 'VER TODAS LAS NOTICIAS'}</span>
-            <ChevronRight className={`w-4 h-4 transition-transform ${showAllNews ? 'rotate-90' : ''}`} />
-          </button>
+          {news.length > 4 && (
+            <button
+              onClick={() => setShowAllNews(!showAllNews)}
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-blue-400 font-bold text-sm border border-slate-700 hover:border-blue-400/40 transition-all active:scale-95"
+            >
+              <span>{showAllNews ? 'Mostrar Menos' : 'VER TODAS LAS NOTICIAS'}</span>
+              <ChevronRight className={`w-4 h-4 transition-transform ${showAllNews ? 'rotate-90' : ''}`} />
+            </button>
+          )}
         </div>
 
-        {/* News Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {displayedNews.map((article) => (
-            <article
-              key={article.id}
-              onClick={() => {
-                setSelectedArticle(article);
-                setActiveGalleryImage(article.coverImage);
-              }}
-              className="group cursor-pointer rounded-2xl overflow-hidden bg-slate-950 border border-slate-800 hover:border-blue-500/50 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 flex flex-col"
-            >
-              {/* Cover Photo */}
-              <div className="relative aspect-[16/10] overflow-hidden bg-slate-900">
-                <img
-                  src={article.coverImage}
-                  alt={article.title}
-                  className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 brightness-90 group-hover:brightness-100"
-                  referrerPolicy="no-referrer"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-80" />
+        {/* News Container */}
+        {displayedNews.length === 1 ? (
+          <div className="max-w-3xl mx-auto">
+            {displayedNews.map((article) => (
+              <article
+                key={article.id}
+                onClick={() => {
+                  setSelectedArticle(article);
+                  setActiveGalleryImage(article.coverImage);
+                }}
+                className="group cursor-pointer rounded-2xl sm:rounded-3xl overflow-hidden bg-slate-950 border border-slate-800 hover:border-blue-500/50 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 flex flex-col md:flex-row"
+              >
+                {/* Cover Photo */}
+                <div className="relative md:w-1/2 aspect-[16/10] md:aspect-auto overflow-hidden bg-slate-900 shrink-0 min-h-[220px]">
+                  <img
+                    src={article.coverImage}
+                    alt={article.title}
+                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 brightness-90 group-hover:brightness-100"
+                    referrerPolicy="no-referrer"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-80 md:hidden" />
 
-                <div className="absolute top-3 left-3">
-                  <span className="px-2.5 py-0.5 rounded text-[11px] font-bold bg-blue-600 text-white uppercase tracking-wide">
-                    {article.categoryTag}
-                  </span>
-                </div>
-
-                {article.gallery && article.gallery.length > 1 && (
-                  <div className="absolute top-3 right-3">
-                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-semibold bg-slate-950/80 text-white border border-slate-700 backdrop-blur">
-                      <Images className="w-3 h-3 text-blue-400" />
-                      +{article.gallery.length} fotos
+                  <div className="absolute top-4 left-4">
+                    <span className="px-3 py-1 rounded text-xs font-black bg-blue-600 text-white uppercase tracking-wider shadow-md">
+                      {article.categoryTag}
                     </span>
                   </div>
-                )}
-              </div>
 
-              {/* Card Body */}
-              <div className="p-5 flex-1 flex flex-col justify-between space-y-3">
-                <div className="space-y-2">
-                  <div className="flex items-center gap-1.5 text-xs text-slate-400">
-                    <Calendar className="w-3.5 h-3.5 text-blue-400" />
-                    <span>{article.date}</span>
+                  {article.gallery && article.gallery.length > 1 && (
+                    <div className="absolute bottom-4 left-4">
+                      <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-semibold bg-slate-950/85 text-white border border-slate-700 backdrop-blur shadow">
+                        <Images className="w-3.5 h-3.5 text-blue-400" />
+                        {article.gallery.length} fotos
+                      </span>
+                    </div>
+                  )}
+                </div>
+
+                {/* Card Body */}
+                <div className="p-6 sm:p-8 md:w-1/2 flex flex-col justify-between space-y-4">
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-2 text-xs text-slate-400">
+                      <Calendar className="w-3.5 h-3.5 text-blue-400" />
+                      <span>{article.date}</span>
+                    </div>
+
+                    <h3 className="font-heading font-black text-xl sm:text-2xl text-white group-hover:text-blue-400 transition-colors leading-snug">
+                      {article.title}
+                    </h3>
+
+                    <p className="text-sm text-slate-300 line-clamp-4 leading-relaxed">
+                      {article.summary}
+                    </p>
                   </div>
 
-                  <h3 className="font-heading font-black text-lg text-white group-hover:text-blue-400 transition-colors leading-snug">
-                    {article.title}
-                  </h3>
+                  <div className="pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs font-bold text-blue-400 group-hover:text-blue-300">
+                    <span>Leer comunicado completo</span>
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {displayedNews.map((article) => (
+              <article
+                key={article.id}
+                onClick={() => {
+                  setSelectedArticle(article);
+                  setActiveGalleryImage(article.coverImage);
+                }}
+                className="group cursor-pointer rounded-2xl overflow-hidden bg-slate-950 border border-slate-800 hover:border-blue-500/50 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 flex flex-col"
+              >
+                {/* Cover Photo */}
+                <div className="relative aspect-[16/10] overflow-hidden bg-slate-900">
+                  <img
+                    src={article.coverImage}
+                    alt={article.title}
+                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 brightness-90 group-hover:brightness-100"
+                    referrerPolicy="no-referrer"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-80" />
 
-                  <p className="text-xs sm:text-sm text-slate-400 line-clamp-3 leading-relaxed">
-                    {article.summary}
-                  </p>
+                  <div className="absolute top-3 left-3">
+                    <span className="px-2.5 py-0.5 rounded text-[11px] font-bold bg-blue-600 text-white uppercase tracking-wide">
+                      {article.categoryTag}
+                    </span>
+                  </div>
+
+                  {article.gallery && article.gallery.length > 1 && (
+                    <div className="absolute top-3 right-3">
+                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-semibold bg-slate-950/80 text-white border border-slate-700 backdrop-blur">
+                        <Images className="w-3 h-3 text-blue-400" />
+                        +{article.gallery.length} fotos
+                      </span>
+                    </div>
+                  )}
                 </div>
 
-                <div className="pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs font-bold text-blue-400 group-hover:text-blue-300">
-                  <span>Leer nota completa</span>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                {/* Card Body */}
+                <div className="p-5 flex-1 flex flex-col justify-between space-y-3">
+                  <div className="space-y-2">
+                    <div className="flex items-center gap-1.5 text-xs text-slate-400">
+                      <Calendar className="w-3.5 h-3.5 text-blue-400" />
+                      <span>{article.date}</span>
+                    </div>
+
+                    <h3 className="font-heading font-black text-lg text-white group-hover:text-blue-400 transition-colors leading-snug">
+                      {article.title}
+                    </h3>
+
+                    <p className="text-xs sm:text-sm text-slate-400 line-clamp-3 leading-relaxed">
+                      {article.summary}
+                    </p>
+                  </div>
+
+                  <div className="pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs font-bold text-blue-400 group-hover:text-blue-300">
+                    <span>Leer nota completa</span>
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </div>
                 </div>
-              </div>
-            </article>
-          ))}
-        </div>
+              </article>
+            ))}
+          </div>
+        )}
       </div>
 
       {/* FULL ARTICLE MODAL */}

@@ -75,13 +75,13 @@ Actividad: ${formData.interestActivity}
         <div className="text-center max-w-3xl mx-auto mb-14">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-600 text-white text-xs sm:text-sm font-black uppercase tracking-wider mb-3 shadow-md shadow-blue-600/30 ring-1 ring-white/20">
             <UserPlus className="w-4 h-4" />
-            SOLAPA ESPECIAL: ASOCIATE AL CLUB
+            ASOCIATE AL CLUB
           </div>
-          <h2 className="font-heading font-black text-3xl sm:text-5xl text-white uppercase tracking-tight">
+          <h2 className="font-heading font-black text-[1.15rem] xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl text-white uppercase tracking-tight whitespace-nowrap">
             HACETE SOCIO DE MERIDIANO V°
           </h2>
-          <p className="mt-3 text-base sm:text-lg text-slate-300">
-            Formá parte de la gran familia de Meridiano V°. Apoyá al básquet, accedé a todos los partidos de local, disfrutá de las instalaciones y fortalecé nuestro club de barrio.
+          <p className="mt-3 text-sm sm:text-base text-slate-300">
+            Formá parte de la gran familia de Meridiano V°. Apoyá al básquet, disfrutá de la vida del club y fortalecé nuestra institución de barrio.
           </p>
         </div>
 

@@ -60,17 +60,17 @@ interface ClubDataContextType {
 const ClubDataContext = createContext<ClubDataContextType | undefined>(undefined);
 
 const STORAGE_KEYS = {
-  CLUB_INFO: 'meridiano_club_info_v1',
-  CATEGORIES: 'meridiano_categories_v1',
-  MATCHES: 'meridiano_matches_v1',
-  NEWS: 'meridiano_news_v1',
-  PLANS: 'meridiano_plans_v1',
-  APPLICATIONS: 'meridiano_applications_v1',
-  ADMIN_SESSION: 'meridiano_admin_session_v1',
-  ADMIN_PIN: 'meridiano_admin_pin_v1'
+  CLUB_INFO: 'meridiano_club_info_v2',
+  CATEGORIES: 'meridiano_categories_v2',
+  MATCHES: 'meridiano_matches_v2',
+  NEWS: 'meridiano_news_v2',
+  PLANS: 'meridiano_plans_v2',
+  APPLICATIONS: 'meridiano_applications_v2',
+  ADMIN_SESSION: 'meridiano_admin_session_v2',
+  ADMIN_PIN: 'meridiano_admin_pin_v2'
 };
 
-const DEFAULT_PIN = '1929'; // Default club founding year PIN! Simple and memorable for administrators.
+const DEFAULT_PIN = '1414'; // Administrator PIN
 
 export const ClubDataProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [clubInfo, setClubInfo] = useState<ClubInfo>(() => {
@@ -200,7 +200,7 @@ export const ClubDataProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   // Auth functions
   const loginAdmin = (pin: string): boolean => {
     const cleanPin = pin.trim();
-    if (cleanPin === DEFAULT_PIN || cleanPin === 'meridiano1929' || cleanPin === '1929') {
+    if (cleanPin === DEFAULT_PIN || cleanPin === '1414' || cleanPin === 'meridiano1414') {
       setIsAdminLoggedIn(true);
       sessionStorage.setItem(STORAGE_KEYS.ADMIN_SESSION, 'true');
       return true;

@@ -120,7 +120,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenAdmin, onNavigate }) => {
               </li>
               <li>
                 <button onClick={() => onNavigate('el-club')} className="hover:text-blue-400 transition-colors text-left">
-                  Microestadio e Instalaciones
+                  Autoridades
                 </button>
               </li>
               <li>
@@ -130,7 +130,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenAdmin, onNavigate }) => {
               </li>
               <li>
                 <button onClick={() => onNavigate('asociate')} className="hover:text-blue-300 transition-colors text-left font-bold text-blue-400 inline-flex items-center gap-1">
-                  <UserPlus className="w-3.5 h-3.5" /> Solapa: Asociate al Club
+                  <UserPlus className="w-3.5 h-3.5" /> Asociate al Club
                 </button>
               </li>
             </ul>

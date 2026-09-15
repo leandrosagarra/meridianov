@@ -204,7 +204,7 @@ export const Header: React.FC<HeaderProps> = ({
                   className="w-full flex items-center justify-center gap-2 py-3 px-4 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl text-sm shadow-md"
                 >
                   <UserPlus className="w-4 h-4" />
-                  <span>SOLAPA: ASOCIATE AL CLUB</span>
+                  <span>ASOCIATE AL CLUB</span>
                 </button>
 
                 <div className="flex items-center justify-between pt-2 px-1 text-xs text-slate-400">
