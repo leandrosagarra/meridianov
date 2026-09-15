@@ -1,0 +1,6 @@
+{
+  "name": "Club Meridiano V° - Sitio Oficial",
+  "description": "Sitio web oficial del Centro de Fomento y Biblioteca Meridiano V°. Información de básquet, fixture, resultados, categorías, noticias, solapa para asociarse y panel de administración.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
