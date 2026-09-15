@@ -81,32 +81,27 @@ export const Footer: React.FC<FooterProps> = ({ onOpenAdmin, onNavigate }) => {
           {/* Quick Links */}
           <div className="space-y-3">
             <h4 className="font-heading font-black text-xs uppercase tracking-wider text-white">
-              Básquet & Torneos
+              Básquet & Actividades
             </h4>
             <ul className="space-y-2 text-xs">
               <li>
-                <button onClick={() => onNavigate('proximo-partido')} className="hover:text-blue-400 transition-colors text-left">
-                  Próximo Partido
-                </button>
-              </li>
-              <li>
-                <button onClick={() => onNavigate('ultimos-resultados')} className="hover:text-blue-400 transition-colors text-left">
-                  Últimos Resultados
-                </button>
-              </li>
-              <li>
-                <button onClick={() => onNavigate('fixture')} className="hover:text-blue-400 transition-colors text-left">
-                  Fixture Completo
-                </button>
-              </li>
-              <li>
                 <button onClick={() => onNavigate('equipos')} className="hover:text-blue-400 transition-colors text-left">
-                  Nuestros Equipos
+                  Nuestros Equipos & Categorías
+                </button>
+              </li>
+              <li>
+                <button onClick={() => onNavigate('noticias')} className="hover:text-blue-400 transition-colors text-left">
+                  Noticias & Actualidad
                 </button>
               </li>
               <li>
                 <button onClick={() => onNavigate('sumate')} className="hover:text-blue-300 transition-colors text-left text-blue-400 font-semibold">
                   Sumate a Jugar
+                </button>
+              </li>
+              <li>
+                <button onClick={() => onNavigate('contacto')} className="hover:text-blue-400 transition-colors text-left">
+                  Contacto & Ubicación
                 </button>
               </li>
             </ul>

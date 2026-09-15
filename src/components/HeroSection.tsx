@@ -2,12 +2,10 @@ import React from 'react';
 import { useClubData } from '../context/ClubDataContext';
 import { ClubCrest } from './ClubCrest';
 import { 
-  Calendar, 
   Trophy, 
   Users, 
   Newspaper, 
   UserPlus, 
-  Flame,
   Sparkles
 } from 'lucide-react';
 
@@ -70,27 +68,11 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
 
           <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 max-w-4xl mx-auto">
             <button
-              onClick={() => onNavigate('proximo-partido')}
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-900/90 hover:bg-slate-800 text-white text-sm font-semibold border border-slate-700/80 hover:border-blue-400/60 shadow-md transition-all active:scale-95"
-            >
-              <Flame className="w-4 h-4 text-blue-400" />
-              <span>Próximo partido</span>
-            </button>
-
-            <button
-              onClick={() => onNavigate('fixture')}
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-900/90 hover:bg-slate-800 text-white text-sm font-semibold border border-slate-700/80 hover:border-blue-400/60 shadow-md transition-all active:scale-95"
-            >
-              <Calendar className="w-4 h-4 text-blue-400" />
-              <span>Fixture</span>
-            </button>
-
-            <button
               onClick={() => onNavigate('equipos')}
               className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-900/90 hover:bg-slate-800 text-white text-sm font-semibold border border-slate-700/80 hover:border-blue-400/60 shadow-md transition-all active:scale-95"
             >
               <Users className="w-4 h-4 text-blue-400" />
-              <span>Equipos</span>
+              <span>Nuestros Equipos</span>
             </button>
 
             <button

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useClubData } from '../context/ClubDataContext';
-import { Match, NewsArticle, Category, Player } from '../types';
+import { NewsArticle, Category, Player } from '../types';
 import { 
   Shield, 
   X, 
@@ -8,8 +8,6 @@ import {
   Trash2, 
   Edit3, 
   Check, 
-  Calendar, 
-  Trophy, 
   Newspaper, 
   Users, 
   Settings, 
@@ -32,15 +30,11 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ isOpen, onClose }) => {
   const {
     clubInfo,
     categories,
-    matches,
     news,
     membershipApplications,
     isAdminLoggedIn,
     loginAdmin,
     logoutAdmin,
-    addMatch,
-    updateMatch,
-    deleteMatch,
     addNews,
     updateNews,
     deleteNews,
@@ -58,26 +52,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ isOpen, onClose }) => {
   const [loginError, setLoginError] = useState(false);
 
   // Active admin tab
-  const [activeTab, setActiveTab] = useState<'matches' | 'news' | 'categories' | 'info' | 'applications'>('matches');
-
-  // Match Form State
-  const [matchForm, setMatchForm] = useState({
-    id: '',
-    category: 'Primera División',
-    tournament: 'Torneo Oficial APB 2026',
-    round: 'Fecha 15',
-    homeTeam: 'Club Meridiano V°',
-    awayTeam: '',
-    homeScore: '',
-    awayScore: '',
-    isFinished: false,
-    date: new Date().toISOString().split('T')[0],
-    time: '20:30',
-    court: 'Microestadio Meridiano V° (Calle 67 e/ 16 y 17)',
-    isLocal: true,
-    summary: ''
-  });
-  const [isEditingMatch, setIsEditingMatch] = useState(false);
+  const [activeTab, setActiveTab] = useState<'news' | 'categories' | 'info' | 'applications'>('news');
 
   // News Form State
   const [newsForm, setNewsForm] = useState({
@@ -128,78 +103,6 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ isOpen, onClose }) => {
     } else {
       setLoginError(true);
     }
-  };
-
-  // Match Handlers
-  const handleSaveMatch = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!matchForm.homeTeam || !matchForm.awayTeam) {
-      alert('Completá los nombres de los equipos.');
-      return;
-    }
-
-    const matchPayload = {
-      category: matchForm.category,
-      tournament: matchForm.tournament,
-      round: matchForm.round,
-      homeTeam: matchForm.homeTeam,
-      awayTeam: matchForm.awayTeam,
-      homeScore: matchForm.homeScore !== '' ? Number(matchForm.homeScore) : undefined,
-      awayScore: matchForm.awayScore !== '' ? Number(matchForm.awayScore) : undefined,
-      isFinished: matchForm.isFinished,
-      date: matchForm.date,
-      time: matchForm.time,
-      court: matchForm.court,
-      isLocal: matchForm.isLocal,
-      summary: matchForm.summary
-    };
-
-    if (isEditingMatch && matchForm.id) {
-      updateMatch(matchForm.id, matchPayload);
-      showBanner('¡Partido actualizado con éxito!');
-    } else {
-      addMatch(matchPayload);
-      showBanner('¡Nuevo partido creado con éxito!');
-    }
-
-    // Reset
-    setIsEditingMatch(false);
-    setMatchForm({
-      id: '',
-      category: 'Primera División',
-      tournament: 'Torneo Oficial APB 2026',
-      round: 'Fecha ' + (matches.length + 1),
-      homeTeam: 'Club Meridiano V°',
-      awayTeam: '',
-      homeScore: '',
-      awayScore: '',
-      isFinished: false,
-      date: new Date().toISOString().split('T')[0],
-      time: '20:30',
-      court: 'Microestadio Meridiano V° (Calle 67 e/ 16 y 17)',
-      isLocal: true,
-      summary: ''
-    });
-  };
-
-  const handleEditMatchClick = (m: Match) => {
-    setIsEditingMatch(true);
-    setMatchForm({
-      id: m.id,
-      category: m.category,
-      tournament: m.tournament,
-      round: m.round || '',
-      homeTeam: m.homeTeam,
-      awayTeam: m.awayTeam,
-      homeScore: m.homeScore !== undefined ? String(m.homeScore) : '',
-      awayScore: m.awayScore !== undefined ? String(m.awayScore) : '',
-      isFinished: m.isFinished,
-      date: m.date,
-      time: m.time,
-      court: m.court,
-      isLocal: m.isLocal,
-      summary: m.summary || ''
-    });
   };
 
   // News Handlers
@@ -370,18 +273,6 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ isOpen, onClose }) => {
             {/* Sidebar Navigation */}
             <div className="sm:w-60 bg-slate-950 border-r border-slate-800 p-3 sm:p-4 space-y-1 overflow-x-auto sm:overflow-y-auto flex sm:flex-col shrink-0">
               <button
-                onClick={() => setActiveTab('matches')}
-                className={`w-full flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-left transition-colors shrink-0 ${
-                  activeTab === 'matches'
-                    ? 'bg-blue-600 text-white shadow-md'
-                    : 'text-slate-300 hover:bg-slate-900'
-                }`}
-              >
-                <Trophy className="w-4 h-4 shrink-0" />
-                <span>Partidos & Resultados</span>
-              </button>
-
-              <button
                 onClick={() => setActiveTab('news')}
                 className={`w-full flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-left transition-colors shrink-0 ${
                   activeTab === 'news'
@@ -455,274 +346,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ isOpen, onClose }) => {
 
             {/* Tab Panels */}
             <div className="flex-1 p-4 sm:p-6 overflow-y-auto space-y-6">
-              {/* TAB 1: MATCHES & SCORES */}
-              {activeTab === 'matches' && (
-                <div className="space-y-6">
-                  {/* Form to Add/Edit Match */}
-                  <div className="p-5 rounded-2xl bg-slate-950 border border-slate-800 space-y-4">
-                    <div className="flex items-center justify-between">
-                      <h4 className="font-heading font-black text-base sm:text-lg text-white uppercase flex items-center gap-2">
-                        {isEditingMatch ? <Edit3 className="w-4 h-4 text-blue-400" /> : <Plus className="w-4 h-4 text-blue-400" />}
-                        {isEditingMatch ? 'Modificar Partido / Cargar Resultado' : 'Crear Nuevo Partido / Fixture'}
-                      </h4>
-
-                      {isEditingMatch && (
-                        <button
-                          onClick={() => {
-                            setIsEditingMatch(false);
-                            setMatchForm({
-                              id: '',
-                              category: 'Primera División',
-                              tournament: 'Torneo Oficial APB 2026',
-                              round: 'Fecha ' + (matches.length + 1),
-                              homeTeam: 'Club Meridiano V°',
-                              awayTeam: '',
-                              homeScore: '',
-                              awayScore: '',
-                              isFinished: false,
-                              date: new Date().toISOString().split('T')[0],
-                              time: '20:30',
-                              court: 'Microestadio Meridiano V° (Calle 67 e/ 16 y 17)',
-                              isLocal: true,
-                              summary: ''
-                            });
-                          }}
-                          className="text-xs text-slate-400 hover:text-white"
-                        >
-                          Cancelar Edición
-                        </button>
-                      )}
-                    </div>
-
-                    <form onSubmit={handleSaveMatch} className="space-y-4">
-                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                        <div>
-                          <label className="block text-[11px] font-bold uppercase text-slate-400 mb-1">
-                            Categoría
-                          </label>
-                          <select
-                            value={matchForm.category}
-                            onChange={(e) => setMatchForm({ ...matchForm, category: e.target.value })}
-                            className="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-xs text-white"
-                          >
-                            <option value="Primera División">Primera División</option>
-                            <option value="U21">U21</option>
-                            <option value="U17">U17</option>
-                            <option value="U15">U15</option>
-                            <option value="U13">U13</option>
-                            <option value="Mini Básquet">Mini Básquet</option>
-                            <option value="Básquet Femenino">Básquet Femenino</option>
-                          </select>
-                        </div>
-
-                        <div>
-                          <label className="block text-[11px] font-bold uppercase text-slate-400 mb-1">
-                            Torneo
-                          </label>
-                          <input
-                            type="text"
-                            value={matchForm.tournament}
-                            onChange={(e) => setMatchForm({ ...matchForm, tournament: e.target.value })}
-                            className="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-xs text-white"
-                          />
-                        </div>
-
-                        <div>
-                          <label className="block text-[11px] font-bold uppercase text-slate-400 mb-1">
-                            Fecha / Ronda
-                          </label>
-                          <input
-                            type="text"
-                            placeholder="Ej. Fecha 14"
-                            value={matchForm.round}
-                            onChange={(e) => setMatchForm({ ...matchForm, round: e.target.value })}
-                            className="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-xs text-white"
-                          />
-                        </div>
-                      </div>
-
-                      {/* Teams & Scores */}
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 p-4 rounded-xl bg-slate-900/60 border border-slate-800">
-                        {/* Home Team */}
-                        <div className="space-y-2">
-                          <label className="block text-[11px] font-bold uppercase text-blue-400">
-                            Equipo Local
-                          </label>
-                          <input
-                            type="text"
-                            required
-                            placeholder="Ej. Club Meridiano V°"
-                            value={matchForm.homeTeam}
-                            onChange={(e) => setMatchForm({ ...matchForm, homeTeam: e.target.value })}
-                            className="w-full bg-slate-950 border border-slate-700 rounded-lg p-2 text-xs text-white font-bold"
-                          />
-                          <input
-                            type="number"
-                            placeholder="Puntos Local (ej: 81)"
-                            value={matchForm.homeScore}
-                            onChange={(e) => setMatchForm({ ...matchForm, homeScore: e.target.value })}
-                            className="w-full bg-slate-950 border border-slate-700 rounded-lg p-2 text-xs text-white"
-                          />
-                        </div>
-
-                        {/* Away Team */}
-                        <div className="space-y-2">
-                          <label className="block text-[11px] font-bold uppercase text-slate-400">
-                            Equipo Visitante
-                          </label>
-                          <input
-                            type="text"
-                            required
-                            placeholder="Ej. Atenas"
-                            value={matchForm.awayTeam}
-                            onChange={(e) => setMatchForm({ ...matchForm, awayTeam: e.target.value })}
-                            className="w-full bg-slate-950 border border-slate-700 rounded-lg p-2 text-xs text-white font-bold"
-                          />
-                          <input
-                            type="number"
-                            placeholder="Puntos Visitante (ej: 76)"
-                            value={matchForm.awayScore}
-                            onChange={(e) => setMatchForm({ ...matchForm, awayScore: e.target.value })}
-                            className="w-full bg-slate-950 border border-slate-700 rounded-lg p-2 text-xs text-white"
-                          />
-                        </div>
-                      </div>
-
-                      {/* Day, Time, Court */}
-                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                        <div>
-                          <label className="block text-[11px] font-bold uppercase text-slate-400 mb-1">
-                            Fecha (Día)
-                          </label>
-                          <input
-                            type="date"
-                            value={matchForm.date}
-                            onChange={(e) => setMatchForm({ ...matchForm, date: e.target.value })}
-                            className="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-xs text-white"
-                          />
-                        </div>
-
-                        <div>
-                          <label className="block text-[11px] font-bold uppercase text-slate-400 mb-1">
-                            Horario
-                          </label>
-                          <input
-                            type="time"
-                            value={matchForm.time}
-                            onChange={(e) => setMatchForm({ ...matchForm, time: e.target.value })}
-                            className="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-xs text-white"
-                          />
-                        </div>
-
-                        <div>
-                          <label className="block text-[11px] font-bold uppercase text-slate-400 mb-1">
-                            Cancha / Estadio
-                          </label>
-                          <input
-                            type="text"
-                            placeholder="Ej. Microestadio Meridiano V°"
-                            value={matchForm.court}
-                            onChange={(e) => setMatchForm({ ...matchForm, court: e.target.value })}
-                            className="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-xs text-white"
-                          />
-                        </div>
-                      </div>
-
-                      {/* Status Checkboxes */}
-                      <div className="flex flex-wrap items-center gap-6 pt-1">
-                        <label className="inline-flex items-center gap-2 cursor-pointer text-xs text-slate-200">
-                          <input
-                            type="checkbox"
-                            checked={matchForm.isFinished}
-                            onChange={(e) => setMatchForm({ ...matchForm, isFinished: e.target.checked })}
-                            className="w-4 h-4 rounded text-blue-600 focus:ring-0"
-                          />
-                          <span>Marcar como partido finalizado (disputado con resultado)</span>
-                        </label>
-
-                        <label className="inline-flex items-center gap-2 cursor-pointer text-xs text-slate-200">
-                          <input
-                            type="checkbox"
-                            checked={matchForm.isLocal}
-                            onChange={(e) => setMatchForm({ ...matchForm, isLocal: e.target.checked })}
-                            className="w-4 h-4 rounded text-blue-600 focus:ring-0"
-                          />
-                          <span>Jugamos de local en Calle 67</span>
-                        </label>
-                      </div>
-
-                      <button
-                        type="submit"
-                        className="py-2.5 px-6 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs uppercase tracking-wider transition-colors shadow"
-                      >
-                        {isEditingMatch ? 'Guardar Cambios del Partido' : 'Crear Partido'}
-                      </button>
-                    </form>
-                  </div>
-
-                  {/* Existing Matches List */}
-                  <div>
-                    <h4 className="font-heading font-black text-sm uppercase text-slate-400 mb-3">
-                      Listado de Partidos Registrados ({matches.length})
-                    </h4>
-
-                    <div className="space-y-2 max-h-96 overflow-y-auto pr-1">
-                      {matches.map((m) => (
-                        <div
-                          key={m.id}
-                          className="p-3 rounded-xl bg-slate-950 border border-slate-800 flex items-center justify-between gap-3 text-xs"
-                        >
-                          <div className="min-w-0">
-                            <div className="flex items-center gap-2 mb-1">
-                              <span className="px-2 py-0.5 rounded bg-blue-600/20 text-blue-400 font-bold text-[10px]">
-                                {m.category}
-                              </span>
-                              <span className="text-slate-400 text-[11px]">
-                                {m.date} - {m.time} hs
-                              </span>
-                              {m.isFinished && (
-                                <span className="text-emerald-400 font-bold text-[10px]">
-                                  FINALIZADO
-                                </span>
-                              )}
-                            </div>
-                            <p className="font-bold text-white text-sm truncate">
-                              {m.homeTeam} {m.isFinished ? `(${m.homeScore})` : ''} vs {m.awayTeam} {m.isFinished ? `(${m.awayScore})` : ''}
-                            </p>
-                            <span className="text-slate-400 text-[11px] block truncate">
-                              📍 {m.court}
-                            </span>
-                          </div>
-
-                          <div className="flex items-center gap-1.5 shrink-0">
-                            <button
-                              onClick={() => handleEditMatchClick(m)}
-                              className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-blue-400"
-                              title="Editar partido / Cargar resultado"
-                            >
-                              <Edit3 className="w-3.5 h-3.5" />
-                            </button>
-                            <button
-                              onClick={() => {
-                                if (confirm('¿Eliminar este partido?')) {
-                                  deleteMatch(m.id);
-                                  showBanner('Partido eliminado');
-                                }
-                              }}
-                              className="p-1.5 rounded-lg bg-slate-800 hover:bg-rose-950 text-rose-400"
-                              title="Eliminar partido"
-                            >
-                              <Trash2 className="w-3.5 h-3.5" />
-                            </button>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {/* TAB 2: NEWS MANAGEMENT */}
+              {/* TAB 1: NEWS MANAGEMENT */}
               {activeTab === 'news' && (
                 <div className="space-y-6">
                   {/* News form */}

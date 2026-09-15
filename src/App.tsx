@@ -2,10 +2,7 @@ import React, { useState } from 'react';
 import { ClubDataProvider } from './context/ClubDataContext';
 import { Header } from './components/Header';
 import { HeroSection } from './components/HeroSection';
-import { NextMatchSection } from './components/NextMatchSection';
-import { RecentResultsSection } from './components/RecentResultsSection';
 import { TeamsSection } from './components/TeamsSection';
-import { FixtureSection } from './components/FixtureSection';
 import { NewsSection } from './components/NewsSection';
 import { ClubHistorySection } from './components/ClubHistorySection';
 import { AsociateSection } from './components/AsociateSection';
@@ -54,20 +51,8 @@ export default function App() {
           {/* Hero Cover with quick access */}
           <HeroSection onNavigate={scrollToSection} />
 
-          {/* Próximo Partido */}
-          <NextMatchSection onViewFixture={() => scrollToSection('fixture')} />
-
-          {/* Últimos Resultados */}
-          <RecentResultsSection
-            onOpenCategory={() => scrollToSection('equipos')}
-            onOpenAdmin={() => setIsAdminOpen(true)}
-          />
-
           {/* Nuestros Equipos & Categorías */}
           <TeamsSection />
-
-          {/* Fixture Completo */}
-          <FixtureSection />
 
           {/* Noticias del Club */}
           <NewsSection />

@@ -40,8 +40,6 @@ export const Header: React.FC<HeaderProps> = ({
 
   const navItems = [
     { id: 'inicio', label: 'Inicio' },
-    { id: 'proximo-partido', label: 'Próximo Partido' },
-    { id: 'fixture', label: 'Fixture' },
     { id: 'equipos', label: 'Nuestros Equipos' },
     { id: 'noticias', label: 'Noticias' },
     { id: 'el-club', label: 'El Club' },
