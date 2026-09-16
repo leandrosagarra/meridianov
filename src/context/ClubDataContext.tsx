@@ -61,7 +61,7 @@ const ClubDataContext = createContext<ClubDataContextType | undefined>(undefined
 
 const STORAGE_KEYS = {
   CLUB_INFO: 'meridiano_club_info_v2',
-  CATEGORIES: 'meridiano_categories_v2',
+  CATEGORIES: 'meridiano_categories_v3',
   MATCHES: 'meridiano_matches_v2',
   NEWS: 'meridiano_news_v2',
   PLANS: 'meridiano_plans_v2',
@@ -89,7 +89,14 @@ export const ClubDataProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     const saved = localStorage.getItem(STORAGE_KEYS.CATEGORIES);
     if (saved) {
       try {
-        return JSON.parse(saved);
+        const parsed = JSON.parse(saved);
+        return parsed.map((cat: Category) => {
+          const defaultCat = INITIAL_CATEGORIES.find(c => c.id === cat.id);
+          if (defaultCat && (cat.squadPhoto?.includes('unsplash.com') || !cat.squadPhoto)) {
+            return { ...cat, squadPhoto: defaultCat.squadPhoto };
+          }
+          return cat;
+        });
       } catch (e) {
         console.error('Error parsing saved categories', e);
       }

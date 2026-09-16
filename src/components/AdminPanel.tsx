@@ -546,6 +546,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ isOpen, onClose }) => {
                           Director Técnico
                         </label>
                         <input
+                          key={`coach-${currentCategory.id}`}
                           type="text"
                           defaultValue={currentCategory.coach}
                           onBlur={(e) => {
@@ -561,6 +562,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ isOpen, onClose }) => {
                           Días de Entrenamiento
                         </label>
                         <input
+                          key={`schedule-${currentCategory.id}`}
                           type="text"
                           defaultValue={currentCategory.trainingSchedule.days}
                           onBlur={(e) => {
@@ -568,6 +570,22 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ isOpen, onClose }) => {
                               trainingSchedule: { ...currentCategory.trainingSchedule, days: e.target.value }
                             });
                             showBanner('Horario actualizado');
+                          }}
+                          className="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-white"
+                        />
+                      </div>
+
+                      <div className="sm:col-span-2">
+                        <label className="block text-[11px] font-bold text-slate-400 mb-1">
+                          Foto del Plantel (URL o /NOMBRE.JPG)
+                        </label>
+                        <input
+                          key={`photo-${currentCategory.id}`}
+                          type="text"
+                          defaultValue={currentCategory.squadPhoto}
+                          onBlur={(e) => {
+                            updateCategory(currentCategory.id, { squadPhoto: e.target.value });
+                            showBanner('Foto de categoría actualizada');
                           }}
                           className="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-white"
                         />

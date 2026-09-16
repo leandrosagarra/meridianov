@@ -111,7 +111,7 @@ export const INITIAL_CATEGORIES: Category[] = [
     badgeText: 'Escuela Formativa',
     coach: 'Prof. Santiago Menéndez y Sofía Galván',
     physicalTrainer: 'Prof. Camila Ortiz',
-    squadPhoto: 'https://images.unsplash.com/photo-1519766304817-4f37bda74a29?q=80&w=1200&auto=format&fit=crop',
+    squadPhoto: '/ESCUELITA.JPG',
     description: 'Enfoque lúdico y formativo donde los chicos aprenden los fundamentos del básquetbol, la importancia del trabajo en equipo, la motricidad y el amor por la camiseta.',
     trainingSchedule: {
       days: 'Lunes, Miércoles y Viernes',
@@ -136,7 +136,7 @@ export const INITIAL_CATEGORIES: Category[] = [
     badgeText: 'Formativa APB',
     coach: 'Prof. Damián Flores',
     physicalTrainer: 'Prof. Lautaro Varela',
-    squadPhoto: 'https://images.unsplash.com/photo-1546519638-68e109498ffc?q=80&w=1200&auto=format&fit=crop',
+    squadPhoto: '/U13.JPG',
     description: 'Primera categoría competitiva federada ante la Asociación Platense de Básquetbol. Transición del mini básquet a la táctica grupal y desarrollo atlético.',
     trainingSchedule: {
       days: 'Lunes, Miércoles y Viernes',
@@ -167,7 +167,7 @@ export const INITIAL_CATEGORIES: Category[] = [
     badgeText: 'Formativa APB',
     coach: 'Prof. Matías Cárdenas',
     physicalTrainer: 'Prof. Lautaro Varela',
-    squadPhoto: 'https://images.unsplash.com/photo-1579952363873-27f3bade9f55?q=80&w=1200&auto=format&fit=crop',
+    squadPhoto: '/U15.JPG',
     description: 'Etapa clave de consolidación técnico-táctica, fortalecimiento físico y preparación para el alto rendimiento juvenil.',
     trainingSchedule: {
       days: 'Martes y Jueves (18:00 a 19:30) y Sábados (10:00 a 12:00)',
@@ -198,7 +198,7 @@ export const INITIAL_CATEGORIES: Category[] = [
     badgeText: 'Juveniles Destacados',
     coach: 'Prof. Javier Rossi',
     physicalTrainer: 'Prof. Esteban Belloni',
-    squadPhoto: 'https://images.unsplash.com/photo-1518063319789-7217e6706b04?q=80&w=1200&auto=format&fit=crop',
+    squadPhoto: '/U17.JPG',
     description: 'Actuales campeones del Clausura APB. Plantel de gran intensidad defensiva, juego dinámico en transición y varios jugadores que ya debutaron en Primera.',
     trainingSchedule: {
       days: 'Lunes, Miércoles y Viernes',
@@ -229,7 +229,7 @@ export const INITIAL_CATEGORIES: Category[] = [
     badgeText: 'Antesala de Primera',
     coach: 'Prof. Guillermo Fabris',
     physicalTrainer: 'Prof. Esteban Belloni',
-    squadPhoto: 'https://images.unsplash.com/photo-1544919982-b61976f0ba43?q=80&w=1200&auto=format&fit=crop',
+    squadPhoto: '/U12.JPG',
     description: 'Categoría de máxima exigencia que nutre de manera directa al plantel superior de Primera División. Juego físico y táctica avanzada.',
     trainingSchedule: {
       days: 'Martes y Jueves',
@@ -253,7 +253,7 @@ export const INITIAL_CATEGORIES: Category[] = [
     badgeText: 'Plantel Superior',
     coach: 'DT Mariano Arrechea',
     physicalTrainer: 'Prof. Nicolás Garmendia',
-    squadPhoto: 'https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=1200&auto=format&fit=crop',
+    squadPhoto: '/PRIMERA.JPG',
     description: 'El orgullo y estandarte del club. Plantel competitivo que representa la mística de Meridiano V° en las canchas de toda la región platense con corazón y pertenencia.',
     trainingSchedule: {
       days: 'Lunes, Miércoles y Jueves',
@@ -289,7 +289,7 @@ export const INITIAL_CATEGORIES: Category[] = [
     badgeText: 'Tira Femenina APB',
     coach: 'Prof. Micaela Albarracín',
     physicalTrainer: 'Prof. Camila Ortiz',
-    squadPhoto: 'https://images.unsplash.com/photo-1546519638-68e109498ffc?q=80&w=1200&auto=format&fit=crop',
+    squadPhoto: '/FEMENINO.JPG',
     description: 'Crecimiento sostenido del básquet femenino en Meridiano V°. Formación desde mini básquet hasta el equipo de Primera División con una identidad de garra y pasión.',
     trainingSchedule: {
       days: 'Martes y Jueves (19:00 a 20:30) y Sábados (12:00 a 14:00)',
