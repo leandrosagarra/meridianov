@@ -2,17 +2,15 @@ import React from 'react';
 import { useClubData } from '../context/ClubDataContext';
 import { 
   Trophy, 
-  Clock, 
   MapPin, 
   CheckCircle2, 
   MessageSquare, 
-  Users, 
   Sparkles,
   ArrowRight
 } from 'lucide-react';
 
 export const JoinBasketballSection: React.FC = () => {
-  const { clubInfo, categories } = useClubData();
+  const { clubInfo } = useClubData();
 
   const handleWhatsAppClick = () => {
     const defaultText = `¡Hola Club Meridiano V°! Vi la página web y quiero sumarme a jugar al básquet en el club. ¿Me podrían pasar información para comenzar? ¡Muchas gracias!`;
@@ -44,9 +42,9 @@ export const JoinBasketballSection: React.FC = () => {
       {/* Background Graphic */}
       <div className="absolute right-0 top-1/2 -translate-y-1/2 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Main Title Block */}
-        <div className="text-center max-w-3xl mx-auto mb-12">
+        <div className="text-center max-w-3xl mx-auto mb-10">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-md bg-blue-600/15 text-blue-400 text-xs font-bold uppercase tracking-wider mb-2">
             <Trophy className="w-3.5 h-3.5" />
             Nuevos Jugadores & Familias
@@ -54,105 +52,61 @@ export const JoinBasketballSection: React.FC = () => {
           <h2 className="font-heading font-black text-3xl sm:text-5xl text-white uppercase tracking-tight">
             ¿QUERÉS JUGAR AL BÁSQUET CON NOSOTROS?
           </h2>
-          <p className="mt-3 text-base sm:text-lg text-slate-300">
+          <p className="mt-4 text-base sm:text-lg text-slate-300">
             En Club Meridiano V° te esperamos con las puertas abiertas. Tenemos categorías desde los 4 años hasta Primera División y básquet femenino.
           </p>
         </div>
 
-        {/* Content Box */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-          {/* Left Column: Categories and Schedules */}
-          <div className="lg:col-span-7 bg-slate-950 rounded-3xl p-6 sm:p-8 border border-slate-800 shadow-xl flex flex-col justify-between">
-            <div>
-              <h3 className="font-heading font-black text-xl text-white uppercase mb-4 flex items-center gap-2">
-                <Users className="w-5 h-5 text-blue-400" /> Categorías y Horarios de Práctica
-              </h3>
+        {/* Requirements and CTA Box */}
+        <div className="bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 rounded-3xl p-6 sm:p-10 border border-slate-800 shadow-2xl">
+          <div>
+            <h3 className="font-heading font-black text-xl sm:text-2xl text-white uppercase mb-6 flex items-center justify-center gap-2.5">
+              <Sparkles className="w-5 h-5 text-blue-400" /> Requisitos para Comenzar
+            </h3>
 
-              <div className="space-y-3">
-                {categories.map((cat) => (
-                  <div
-                    key={cat.id}
-                    className="p-3.5 rounded-xl bg-slate-900 border border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-2"
-                  >
-                    <div>
-                      <div className="flex items-center gap-2">
-                        <span className="font-bold text-sm text-white">
-                          {cat.name}
-                        </span>
-                        <span className="text-[11px] px-2 py-0.5 rounded bg-blue-600/20 text-blue-300 font-semibold border border-blue-500/30">
-                          {cat.ageGroup}
-                        </span>
-                      </div>
-                      <span className="text-xs text-slate-400 block mt-0.5">
-                        DT: {cat.coach}
-                      </span>
-                    </div>
-
-                    <div className="text-left sm:text-right shrink-0">
-                      <span className="text-xs font-medium text-slate-300 block">
-                        {cat.trainingSchedule.days}
-                      </span>
-                      <span className="text-xs font-bold text-blue-400 block">
-                        {cat.trainingSchedule.time}
-                      </span>
-                    </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+              {requirements.map((req, i) => (
+                <div key={i} className="p-4 rounded-2xl bg-slate-950/60 border border-slate-800/80 flex items-start gap-3.5">
+                  <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
+                  <div>
+                    <h4 className="text-sm font-bold text-white leading-tight">
+                      {req.title}
+                    </h4>
+                    <p className="text-xs text-slate-400 mt-1 leading-relaxed">
+                      {req.desc}
+                    </p>
                   </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Location Pill */}
-            <div className="mt-6 pt-4 border-t border-slate-800 flex items-center gap-3 text-xs sm:text-sm text-slate-300">
-              <MapPin className="w-5 h-5 text-blue-400 shrink-0" />
-              <span>
-                <strong>Lugar de entrenamiento:</strong> {clubInfo.address}, Microestadio Principal y Gimnasio Auxiliar.
-              </span>
+                </div>
+              ))}
             </div>
           </div>
 
-          {/* Right Column: Requirements & Giant WhatsApp Button */}
-          <div className="lg:col-span-5 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 rounded-3xl p-6 sm:p-8 border border-slate-800 shadow-xl flex flex-col justify-between">
-            <div>
-              <h3 className="font-heading font-black text-xl text-white uppercase mb-4 flex items-center gap-2">
-                <Sparkles className="w-5 h-5 text-blue-400" /> Requisitos para Comenzar
-              </h3>
+          {/* Location note */}
+          <div className="mt-8 pt-5 border-t border-slate-800/80 flex items-center justify-center gap-2.5 text-xs sm:text-sm text-slate-300 text-center">
+            <MapPin className="w-4 h-4 text-blue-400 shrink-0" />
+            <span>
+              <strong>Lugar de entrenamiento:</strong> {clubInfo.address}, Microestadio Principal y Gimnasio Auxiliar.
+            </span>
+          </div>
 
-              <div className="space-y-3.5">
-                {requirements.map((req, i) => (
-                  <div key={i} className="flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
-                    <div>
-                      <h4 className="text-sm font-bold text-white leading-tight">
-                        {req.title}
-                      </h4>
-                      <p className="text-xs text-slate-400 mt-0.5 leading-relaxed">
-                        {req.desc}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+          {/* BIG WHATSAPP BUTTON (QUIERO SUMARME) */}
+          <div className="mt-8 pt-6 border-t border-slate-800 text-center max-w-md mx-auto">
+            <p className="text-xs text-slate-400 mb-3">
+              Coordiná tu clase de prueba con la subcomisión de básquet:
+            </p>
 
-            {/* BIG WHATSAPP BUTTON (QUIERO SUMARME) */}
-            <div className="mt-8 pt-6 border-t border-slate-800 text-center">
-              <p className="text-xs text-slate-400 mb-3">
-                Coordiná tu clase de prueba con la subcomisión de básquet:
-              </p>
+            <button
+              onClick={handleWhatsAppClick}
+              className="w-full py-4 px-8 rounded-2xl bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-white font-heading font-black text-base sm:text-lg uppercase tracking-wider shadow-xl shadow-emerald-600/30 hover:shadow-emerald-600/40 transition-all transform active:scale-95 flex items-center justify-center gap-3 group"
+            >
+              <MessageSquare className="w-6 h-6 animate-bounce" />
+              <span>QUIERO SUMARME</span>
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1.5 transition-transform" />
+            </button>
 
-              <button
-                onClick={handleWhatsAppClick}
-                className="w-full py-4 px-8 rounded-2xl bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-white font-heading font-black text-base sm:text-lg uppercase tracking-wider shadow-xl shadow-emerald-600/30 hover:shadow-emerald-600/40 transition-all transform active:scale-95 flex items-center justify-center gap-3 group"
-              >
-                <MessageSquare className="w-6 h-6 animate-bounce" />
-                <span>QUIERO SUMARME</span>
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1.5 transition-transform" />
-              </button>
-
-              <span className="block text-[11px] text-slate-400 mt-2">
-                Te responderemos al instante por WhatsApp para indicarte día y horario.
-              </span>
-            </div>
+            <span className="block text-[11px] text-slate-400 mt-2.5">
+              Te responderemos al instante por WhatsApp para indicarte día y horario.
+            </span>
           </div>
         </div>
       </div>
