@@ -167,7 +167,7 @@ export const ContactSection: React.FC = () => {
 
             {/* Google Maps External Directions */}
             <a
-              href="https://maps.google.com/?q=Calle+67+1080+La+Plata+Buenos+Aires"
+              href="https://maps.google.com/?q=-34.93655,-57.94420"
               target="_blank"
               rel="noopener noreferrer"
               className="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold transition-colors"
@@ -187,10 +187,10 @@ export const ContactSection: React.FC = () => {
                 <span>Microestadio Meridiano V° • Calle 67 e/ 16 y 17 nº1080</span>
               </div>
 
-              {/* Responsive Google Maps Embed of Calle 67 e/16 y 17 La Plata */}
+              {/* Responsive Google Maps Embed located precisely at Calle 67 e/ 16 y 17 La Plata */}
               <iframe
                 title="Mapa Club Meridiano V"
-                src="https://maps.google.com/maps?q=Calle%2067%20e%2F16%20y%2017%20n1080%20La%20Plata%20Buenos%20Aires&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                src="https://maps.google.com/maps?q=-34.93655,-57.94420&t=&z=17&ie=UTF8&iwloc=&output=embed"
                 width="100%"
                 height="100%"
                 className="w-full h-full min-h-[320px] border-0 grayscale contrast-125 brightness-90 hover:grayscale-0 transition-all duration-300"
