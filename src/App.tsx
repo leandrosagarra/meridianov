@@ -9,7 +9,7 @@ import { AsociateSection } from './components/AsociateSection';
 import { JoinBasketballSection } from './components/JoinBasketballSection';
 import { ContactSection } from './components/ContactSection';
 import { AdminPanel } from './components/AdminPanel';
-import { FloatingWhatsApp } from './components/FloatingWhatsApp';
+import { ClubAssistantBot } from './components/ClubAssistantBot';
 import { Footer } from './components/Footer';
 
 export default function App() {
@@ -76,8 +76,8 @@ export default function App() {
           onOpenAdmin={() => setIsAdminOpen(true)}
         />
 
-        {/* Floating WhatsApp Action */}
-        <FloatingWhatsApp />
+        {/* Floating Club Assistant Bot */}
+        <ClubAssistantBot />
 
         {/* Private Administration Modal */}
         <AdminPanel

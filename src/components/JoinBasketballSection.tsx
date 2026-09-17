@@ -6,8 +6,10 @@ import {
   CheckCircle2, 
   MessageSquare, 
   Sparkles,
-  ArrowRight
+  ArrowRight,
+  Bot
 } from 'lucide-react';
+import { openClubBot } from './ClubAssistantBot';
 
 export const JoinBasketballSection: React.FC = () => {
   const { clubInfo } = useClubData();
@@ -89,24 +91,31 @@ export const JoinBasketballSection: React.FC = () => {
             </span>
           </div>
 
-          {/* BIG WHATSAPP BUTTON (QUIERO SUMARME) */}
+          {/* ASSISTANT BOT CONSULTATION BUTTON */}
           <div className="mt-8 pt-6 border-t border-slate-800 text-center max-w-md mx-auto">
             <p className="text-xs text-slate-400 mb-3">
-              Coordiná tu clase de prueba con la subcomisión de básquet:
+              ¿Tenés dudas sobre cómo sumarte, categorías, horarios o aranceles?
             </p>
 
             <button
-              onClick={handleWhatsAppClick}
-              className="w-full py-4 px-8 rounded-2xl bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-white font-heading font-black text-base sm:text-lg uppercase tracking-wider shadow-xl shadow-emerald-600/30 hover:shadow-emerald-600/40 transition-all transform active:scale-95 flex items-center justify-center gap-3 group"
+              onClick={() => openClubBot('¿Cuáles son los requisitos para comenzar a jugar al básquet?')}
+              className="w-full py-4 px-8 rounded-2xl bg-gradient-to-r from-emerald-500 via-emerald-600 to-green-600 hover:from-emerald-400 hover:to-emerald-500 text-white font-heading font-black text-base sm:text-lg uppercase tracking-wider shadow-xl shadow-emerald-600/35 hover:shadow-emerald-600/50 transition-all transform active:scale-95 flex items-center justify-center gap-3 group ring-2 ring-emerald-400/20"
             >
-              <MessageSquare className="w-6 h-6 animate-bounce" />
-              <span>QUIERO SUMARME</span>
+              <Bot className="w-6 h-6 animate-pulse text-emerald-100" />
+              <span>CONSULTAR AL ASISTENTE VIRTUAL</span>
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1.5 transition-transform" />
             </button>
 
-            <span className="block text-[11px] text-slate-400 mt-2.5">
-              Te responderemos al instante por WhatsApp para indicarte día y horario.
-            </span>
+            <div className="flex items-center justify-center gap-2 mt-3 text-[11px] text-slate-400">
+              <span>Respondemos al instante con la información oficial del club.</span>
+              <button
+                onClick={handleWhatsAppClick}
+                className="text-emerald-400 hover:underline inline-flex items-center gap-1 font-semibold ml-1"
+              >
+                <MessageSquare className="w-3 h-3" />
+                WhatsApp
+              </button>
+            </div>
           </div>
         </div>
       </div>
